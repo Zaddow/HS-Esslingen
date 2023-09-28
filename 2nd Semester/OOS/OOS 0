@@ -4,31 +4,29 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    int amount;
+    int amount; // Deklaration der Variablen 'amount' für die Anzahl der einzugebenden Zahlen
     
-    do{
-        cout << "Anzahl eingeben: " << endl;
-        cin >> amount;
-        
-    }while(amount < 0 || amount > 10);
+    do {
+        cout << "Anzahl eingeben: " << endl; // Aufforderung zur Eingabe der Anzahl
+        cin >> amount; // Benutzereingabe für die Anzahl in 'amount'
+    } while (amount < 0 || amount > 10); // Schleife wiederholt die Eingabe, bis die Anzahl zwischen 0 und 10 liegt
     
-   int numb [amount];
-   int sum = 0;
-   float average;
+    int numb[amount]; // Deklaration eines Arrays 'numb' mit der Größe 'amount' für die einzugebenden Zahlen
+    int sum = 0; // Initialisierung der Summe auf 0
+    float average; // Deklaration der Durchschnittsvariable 'average'
     
-    for(int i = 0; i < amount; i++){
-        
-        cout << "Zahl eingeben: " << endl;
-        cin >> numb[i];
-        sum = sum + numb[i];
+    for (int i = 0; i < amount; i++) {
+        cout << "Zahl eingeben: " << endl; // Aufforderung zur Eingabe einer Zahl
+        cin >> numb[i]; // Benutzereingabe für die i-te Zahl in 'numb'
+        sum = sum + numb[i]; // Summieren der eingegebenen Zahl zur Gesamtsumme 'sum'
     }
     
-    for (int i = 0; i < amount; i++){
-         cout << "Zahl[" << i << "]: " << numb[i] << endl;
-     }
-     
-    average = static_cast< float > (sum) / static_cast< float > (amount);
-    cout << "Durchschnitt: " << average << endl;
-	return 0;
+    for (int i = 0; i < amount; i++) {
+        cout << "Zahl[" << i << "]: " << numb[i] << endl; // Ausgabe der eingegebenen Zahlen
+    }
+    
+    average = static_cast<float>(sum) / static_cast<float>(amount); // Berechnung des Durchschnitts
+    cout << "Durchschnitt: " << average << endl; // Ausgabe des Durchschnitts
+    
+    return 0;
 }
-
