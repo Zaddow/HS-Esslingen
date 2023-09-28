@@ -1,0 +1,34 @@
+#include <iostream>
+#include <array>
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+    int amount;
+    
+    do{
+        cout << "Anzahl eingeben: " << endl;
+        cin >> amount;
+        
+    }while(amount < 0 || amount > 10);
+    
+   int numb [amount];
+   int sum = 0;
+   float average;
+    
+    for(int i = 0; i < amount; i++){
+        
+        cout << "Zahl eingeben: " << endl;
+        cin >> numb[i];
+        sum = sum + numb[i];
+    }
+    
+    for (int i = 0; i < amount; i++){
+         cout << "Zahl[" << i << "]: " << numb[i] << endl;
+     }
+     
+    average = static_cast< float > (sum) / static_cast< float > (amount);
+    cout << "Durchschnitt: " << average << endl;
+	return 0;
+}
+
