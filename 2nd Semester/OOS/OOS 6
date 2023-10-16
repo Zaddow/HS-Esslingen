@@ -1,1 +1,118 @@
 
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+// Klasse Student
+class Student {
+private:
+    string _name;
+    string _first_name;
+
+public:
+    // Parametrisierter Konstruktor für Student
+    Student(string name, string first_name) {
+        _name = name;
+        _first_name = first_name;
+        cout << "Parametrisierter Konstruktor Student: " << _first_name << " " << _name << endl;
+    }
+
+    // Getter-Methoden für _name und _first_name
+    string getName() const {
+        return _name;
+    }
+
+    string getFirstName() const {
+        return _first_name;
+    }
+
+    // Ausgabe-Methode für Student (ohne Parameter)
+    void print() const {
+        cout << "print() ohne Parameter; Student: " << _first_name << " " << _name << endl;
+    }
+
+    // Ausgabe-Methode für Student (mit linebreak-Parameter)
+    void print(bool linebreak) const {
+        cout << "print() mit Parameter; Student: " << _first_name << " " << _name;
+        if (linebreak) {
+            cout << endl;
+        }
+    }
+
+    // Destruktor für Student
+    ~Student() {
+        cout << "Destruktor Student: " << _first_name << " " << _name << endl;
+    }
+};
+
+// Klasse Employee
+class Employee {
+private:
+    string _name;
+    string _first_name;
+
+public:
+    // Parametrisierter Konstruktor für Employee
+    Employee(string name, string first_name) : _name(name), _first_name(first_name) {
+        cout << "Parametrisierter Konstruktor Employee: " << _first_name << " " << _name << endl;
+    }
+
+    // Standardkonstruktor für Employee
+    Employee() : Employee("Mustermann", "Erika") {
+        cout << "Standardkonstruktor Employee: " << _first_name << " " << _name << endl;
+    }
+
+    // Konvertierungskonstruktor von Student zu Employee
+    Employee(const Student& student) : _name(student.getName()), _first_name(student.getFirstName()) {
+        cout << "Konvertierungskonstruktor Employee: " << _first_name << " " << _name << endl;
+    }
+
+    // Getter-Methoden für _name und _first_name
+    string getName() const {
+        return _name;
+    }
+
+    string getFirstName() const {
+        return _first_name;
+    }
+
+    // Ausgabe-Methode für Employee (ohne Parameter)
+    void print() const {
+        cout << "print() ohne Parameter; Mitarbeiter: " << _first_name << " " << _name << endl;
+    }
+
+    // Ausgabe-Methode für Employee (mit linebreak-Parameter)
+    void print(bool linebreak) const {
+        cout << "print() mit Parameter; Mitarbeiter: " << _first_name << " " << _name;
+        if (linebreak) {
+            cout << endl;
+        }
+    }
+
+    // Destruktor für Employee
+    ~Employee() {
+        cout << "Destruktor Employee: " << _first_name << " " << _name << endl;
+    }
+};
+
+int main(int argc, char *argv[])
+{
+    Student stud_mustermann = Student("Mustermann", "Max");
+    Employee empl_mustermann = Employee(stud_mustermann);
+    Employee mit_default = Employee();
+    stud_mustermann.print();
+    stud_mustermann.print(true);
+    empl_mustermann.print();
+    mit_default.print();
+    Student *p_stud_mustermann = nullptr;
+    cout << "Block wird betreten" << endl;
+    {
+        p_stud_mustermann = new Student("Mustermann", "Markus");
+        p_stud_mustermann->print(true);
+    }
+    cout << "Block wurde verlassen" << endl;
+    delete p_stud_mustermann;
+    return 0;
+}
+
